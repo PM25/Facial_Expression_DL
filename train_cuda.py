@@ -37,8 +37,8 @@ if __name__ == '__main__':
     for epoch in range(9):
         for step, (batch_x, batch_y) in enumerate(train_loader):
             optimizer.zero_grad()
-            output = model(batch_x.cuda())
-            loss = loss_func(output, batch_y.cuda())
+            outputs = model(batch_x.cuda())
+            loss = loss_func(outputs, batch_y.cuda())
             loss.backward()
             optimizer.step()
 
