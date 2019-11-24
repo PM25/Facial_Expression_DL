@@ -1,3 +1,4 @@
+from mylib.resnet import ResNet
 from mylib.dataloader import DataLoader
 
 import torch
@@ -25,11 +26,8 @@ if __name__ == '__main__':
     n_classes = data.n_classes
 
     # Model & Loss Function & Optimizer
-    model = torchvision.models.resnet18(pretrained=True)
-    fc_in_size = model.fc.in_features
-    model.fc = nn.Linear(fc_in_size, n_classes)
+    model = ResNet(n_classes)
     model = model.cuda()
-
     loss_func = nn.CrossEntropyLoss().cuda()
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
 
