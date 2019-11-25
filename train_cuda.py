@@ -14,9 +14,7 @@ parser.add_argument('--imgs', type=str, default='data/images', help='Path of Tra
 parser.add_argument('--labels', type=str, default='data/labels.txt', help='Path of Labels File')
 parser.add_argument('--save', type=str, default='models/model_cuda.pkl', help='Path to Save Models')
 parser.add_argument('--val', type=float, default=.2, help='Validation Data Ratio')
-parser.add_argument('--epoch', type=int, default=20
-
-, help='Epoch')
+parser.add_argument('--epoch', type=int, default=10, help='Epoch')
 parser.add_argument('--bs', type=int, default=32, help='Batch Size')
 parser.add_argument('--lr', type=float, default=.001, help='Learning Rate')
 parser.add_argument('--log', type=int, default=10, help='Log Interval')
