@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 
 # Arguments
-parser = ArgumentParser(description='Testing ResNet Model')
+parser = ArgumentParser(description='Predicting Facial Expression of an Image.')
 parser.add_argument('--model', type=str, default='models/model_cuda.pkl', help='Path of Previous Trained Model')
 parser.add_argument('--img', type=str, default='img.jpg', help='Path of Image')
 args = parser.parse_args()
