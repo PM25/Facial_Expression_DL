@@ -18,7 +18,7 @@ parser.add_argument('--epoch', type=int, default=20
 
 , help='Epoch')
 parser.add_argument('--bs', type=int, default=32, help='Batch Size')
-parser.add_argument('--lr', type=float, default=.005, help='Learning Rate')
+parser.add_argument('--lr', type=float, default=.001, help='Learning Rate')
 parser.add_argument('--log', type=int, default=10, help='Log Interval')
 args = parser.parse_args()
 
@@ -44,6 +44,7 @@ if __name__ == '__main__':
     val_loss_his = []
     for epoch in range(args.epoch):
         # Training Model & Record Loss Value
+        model.train()
         train_loss = 0
         for step, (batch_x, batch_y) in enumerate(train_loader):
             optimizer.zero_grad()
@@ -62,6 +63,7 @@ if __name__ == '__main__':
 
         # Validation & Record Loss Value
         if(args.val > 0):
+            model.eval()
             val_loss = 0
             with torch.no_grad():
                 for batch_X, batch_y in val_loader:      

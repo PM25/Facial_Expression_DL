@@ -1,5 +1,6 @@
 import torch
 from PIL import Image
+import torch.nn.functional as F
 from torchvision import transforms
 from argparse import ArgumentParser
 import matplotlib.pyplot as plt
@@ -24,13 +25,15 @@ if __name__ == '__main__':
     n_classes = len(classes)
 
     # Load Model
-    model = torch.load(args.model)
+    model = torch.load(args.model).eval()
 
-    # Load Image
-    img = Image.open(args.img).convert('RGB')
-    img = transform(img)
-    output = model(img.unsqueeze(0).cuda())
-    _, predict = torch.max(output, 1)
+    # Load Image & Predict 
+    with torch.no_grad():
+        img = Image.open(args.img).convert('RGB')
+        img = transform(img)
+        output = model(img.unsqueeze(0).cuda())
+        output = F.softmax(output, dim=1)
+        _, predict = torch.max(output, 1)
     
     plt.barh(range(n_classes), output.squeeze().tolist())
     plt.yticks(range(n_classes), classes)

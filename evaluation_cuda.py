@@ -5,7 +5,7 @@ from argparse import ArgumentParser
 
 
 # Arguments
-parser = ArgumentParser(description='Testing ResNet Model')
+parser = ArgumentParser(description='Testing Model')
 parser.add_argument('--model', type=str, default='models/model_cuda.pkl', help='Path of Previous Trained Model')
 parser.add_argument('--imgs', type=str, default='data/images', help='Path of Testing Images')
 parser.add_argument('--labels', type=str, default='data/labels.txt', help='Path of Labels File')

@@ -1,7 +1,6 @@
 import torch
 import torchvision
 from torch import nn
-import torch.nn.functional as F
 
 
 class ResNet(nn.Module):
@@ -13,6 +12,6 @@ class ResNet(nn.Module):
 
 
     def forward(self, x):
-        # output = F.softmax(self.model(x), dim=1)
+        # No Need Softmax because it's included in nn.CrossEntropyLoss()
         output = self.model(x)
         return output
